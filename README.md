@@ -1,7 +1,7 @@
 # BREADTH-FIRST-SEARCH
 <h1>ExpNo 3 : Implement Breadth First Search Traversal of a Graph</h1> 
-<h3>Name: Pradeep S</h3>
-<h3>Register Number: 212222100034</h3>
+<h3>Name: PRADEEP S</h3>
+<h3>Register Number: 212222100034 </h3>
 <H3>Aim:</H3>
 <p>To Implement Breadth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -69,33 +69,48 @@ Now, Queue becomes empty, So, terminate these process of iteration.
 </ol>
 
 ## Program:
-```py
+```python
 from collections import deque
 from collections import defaultdict
 
+
+'''
+V E
+FOR EVERY EDGE
+U V
+7 9
+A B
+A C 
+A F
+C E
+C F
+C D
+D E 
+D G
+G F
+'''
 def bfs(graph,start,visited,path):
     queue = deque()
     path.append(start)
     queue.append(start)
     visited[start] = True
     while len(queue) != 0:
-        while len(queue) != 0:
         tmpnode = queue.popleft()
-        for node in graph[tmpnode]:
-            if not visited[node]:
-                path.append(node)
-                queue.append(node)
-                visited[node] = True
+        for neighbour in graph[tmpnode]:
+            if visited[neighbour] == False:
+                path.append(neighbour)
+                queue.append(neighbour)
+                visited[neighbour] = True
     return path
 
 graph = defaultdict(list)
 v,e = map(int,input().split())
 for i in range(e):
-    u,v = input().split()
+    u,v = map(str,input().split())
     graph[u].append(v)
     graph[v].append(u)
 
-start = ''
+start = 'A'
 path = []
 visited = defaultdict(bool)
 traversedpath = bfs(graph,start,visited,path)
@@ -117,8 +132,7 @@ G F <BR>
 
 <h3>Sample Output</h3>
 
-
-![3 1](https://github.com/user-attachments/assets/9fd7b394-2946-4d4d-895e-c82c8febecf6)
+![Screenshot 2024-08-28 085910](https://github.com/user-attachments/assets/52354d53-f842-433d-b299-6012290a07d7)
 
 
 <h3>Sample Input</h3>
@@ -133,8 +147,8 @@ G F <BR>
 
 <h3>Sample Output</h3>
 
+![Screenshot 2024-08-28 085951](https://github.com/user-attachments/assets/7cd9a524-420d-4c0b-9cd4-5ea8b70b2e1e)
 
-![3 2](https://github.com/user-attachments/assets/eb8b7905-369b-4d28-a672-2318ed6d8fb7)
 
 
 <h3>Result:</h3>
